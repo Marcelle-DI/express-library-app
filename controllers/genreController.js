@@ -1,8 +1,7 @@
 var Genre = require('../models/genre');
 const validator = require('express-validator');
 
-const { body,validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
+const { body,validationResult } = require('express-validator');
 
 // Display list of all Genre.
 exports.genre_list = function(req, res) {
@@ -15,9 +14,13 @@ exports.genre_detail = function(req, res) {
 };
 
 // Display Genre create form on GET.
+// exports.genre_create_get = function(req, res, next) {     
+//     res.render('genre_form', { title: 'Create Genre' });
+//   };
+
 exports.genre_create_get = function(req, res, next) {     
-    res.render('genre_form', { title: 'Create Genre' });
-  };
+  res.render('genre_form', { title: 'Create Genre' });
+};
 
 // Handle Genre create on POST.
 exports.genre_create_post =  [
@@ -26,7 +29,7 @@ exports.genre_create_post =  [
     validator.body('name', 'Genre name required').trim().isLength({ min: 1 }),
     
     // Sanitize (escape) the name field.
-    validator.sanitizeBody('name').escape(),
+    validator.body('name').escape(),
   
     // Process request after validation and sanitization.
     (req, res, next) => {
