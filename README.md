@@ -2,7 +2,7 @@
 
 An app to provide an online catalog for a small local library, where users can browse available books and manage their accounts.
 
-The catalog consists of book definitions which have associated book instances. Books also have an associated Genre and Author. API definitions supporting the CRUD operations for these data models are:
+The catalog consists of book definitions which have associated book instances. Books also have an associated Genre and Author. API endpoint definitions supporting the CRUD operations for these data models are:
 
 ## Book CRUD routes
 
@@ -58,26 +58,29 @@ The catalog consists of book definitions which have associated book instances. B
 | Fetch one Genre | /genre/:id        | GET         |
 | List all Genres | /genres           | GET         |
 
+## User CRUD routes
+
+| Operation      | API route          | HTTP method |
+| -------------- | ------------------ | ----------- |
+| Create a user  | /api/users         | POST        |
+| Delete a user  | /api/users/:userId | DELETE      |
+| Update a user  | /api/users/:userId | PUT         |
+| Fetch one user | /api/users/:userId | GET         |
+| List all users | /api/users         | GET         |
+
+## Authentication routes
+
+| Operation     | API route                | HTTP method |
+| ------------- | ------------------------ | ----------- |
+| User sign-in  | /auth/signin             | POST        |
+| User sign-out | (optional) /auth/signout | GET         |
+
 ## ToDo:
 
 Add the following use cases with user CRUD and auth functionality implementations:
 
 1. Sign up: Users can register by creating a new account using an email address
-2. User list: Any visitor can see the list of all registered users
+2. User list: Any visitor can see the list of all registered users. This is to enable the social feature to be implimented.
 3. Authentication: Registered users can sign in and sign out
 4. Protected user profile: Only registered users can view individual user details after signing in
 5. Authorized user edit and delete: Only a registered and authenticated user can edit or remove their own user account details
-
-## API endpoints for User CRUD operations
-
-To enable and handle user CRUD operations on the user database, the backend will implement and expose API endpoints that the frontend can use in the views, as follows:
-
-| Operation      | API route                | HTTP method |
-| -------------- | ------------------------ | ----------- |
-| Create a user  | /api/users               | POST        |
-| List all users | /api/users               | GET         |
-| Fetch a user   | /api/users/:userId       | GET         |
-| Update a user  | /api/users/:userId       | PUT         |
-| Delete a user  | /api/users/:userId       | DELETE      |
-| User sign-in   | /auth/signin             | POST        |
-| User sign-out  | (optional) /auth/signout | GET         |
