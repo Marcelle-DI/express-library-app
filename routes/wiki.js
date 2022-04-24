@@ -1,7 +1,5 @@
-// wiki.js - Wiki route module.
-
-let express = require("express");
-let router = express.Router();
+const express = require("express");
+const router = express.Router();
 
 // Home page route.
 router.get("/", function (req, res) {
